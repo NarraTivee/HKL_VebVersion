@@ -1,0 +1,151 @@
+$color_1: #c54914;
+$color_2: #c8b492;
+$color_3: #9bb3c3;
+$color_4: #799bb7;
+$color_5: #6286a3;
+$color_6: #72747a;
+$color_7: #947a78;
+$color_8: #4f5562;
+$color_9: #6d4f4f;
+$color_10: #261e24;
+$color_11: #dad1c9;
+$color_11_shade: #fcf6ee;
+
+.welcom_block {
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: transparent;
+
+    .welcom_block_container {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        border-radius: 20px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        .welcom_block_content {
+            width: 100%;
+            height: calc(100% - 4rem);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+
+            .welcom_block_left,
+            .welcom_block_right {
+                width: 100%;
+                height: 100%;
+            }
+
+            .welcom_block_left {
+
+                .welcom_block_about_us {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .welcom_block_about_us_container {
+                        width: fit-content;
+                        height: fit-content;
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+
+                        .welcom_block_about_us_text {
+                            max-width: 18rem;
+                            height: fit-content;
+                            background-color: #6286a381;
+                            backdrop-filter: blur(3px);
+                            padding: 1rem;
+                            box-sizing: border-box;
+                            border-radius: 5px;
+                            box-shadow: 2px 2px 20px #33333370;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: 1rem;
+
+                            p {
+                                font-family: 'PitagonSansMono';
+                                font-size: 1.3em;
+                                color: #fcf6ee;
+                            }
+
+                            .welcom_block_about_us_btn_container {
+                                width: 100%;
+                                height: 3rem;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 0;
+                                box-sizing: border-box;
+                                background-color: #6286a3;
+                                border-radius: 2px;
+
+                                a {
+                                    flex: 1;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-family: 'SedgwickAve';
+                                    font-size: 1.3em;
+                                    color: #261e24;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+
+                        .welcom_block_about_us_title {
+                            width: fit-content;
+                            height: fit-content;
+
+                            h1 {
+                                font-size: 10em;
+                                line-height: 1em;
+                                font-family: 'Antosha';
+                                text-transform: uppercase;
+                                color: #fcf6ee;
+                                text-shadow: 2px 2px 20px #444;
+
+                                span {
+                                    font-family: 'Modak';
+                                    font-size: 0.8em;
+                                    text-align: center;
+                                    color: lightblue; // lgbt
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .welcom_block_right {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+
+                .welcom_block_logo_container {
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    background-position: left;
+                    background-size: 70%;
+                }
+            }
+
+        }
+    }
+}

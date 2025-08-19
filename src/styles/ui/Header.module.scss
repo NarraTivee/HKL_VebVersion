@@ -1,0 +1,97 @@
+$color_1: #c54914;
+$color_2: #c8b492;
+$color_3: #9bb3c3;
+$color_4: #799bb7;
+$color_5: #6286a3;
+$color_6: #72747a;
+$color_7: #947a78;
+$color_8: #4f5562;
+$color_9: #6d4f4f;
+$color_10: #261e24;
+$color_11: #dad1c9;
+$color_11_shade: #fcf6ee;
+
+.header {
+    width: 100%;
+    height: 4rem;
+    border-radius: 20px;
+    background-color: #fcf6ee;
+    padding: 0 1rem;
+    box-sizing: border-box;
+
+    .header_container {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .header_left {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-family: 'BebasNeue';
+            font-size: 1.5em;
+            gap: 2rem;
+
+            .header_logo {
+                width: fit-content;
+                height: fit-content;
+                background-color: #261e24;
+                border-radius: 10px;
+
+                a {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    padding: 0.1rem 0.5rem;
+                    box-sizing: border-box;
+                    color: #fcf6ee;
+                }
+            }
+
+            .header_routing_list {
+                display: flex;
+                align-items: center;
+                gap: 2.5rem;
+
+                .header_routing_items {
+                    letter-spacing: 1px;
+
+                    a {
+                        font-family: 'PitagonSansMono';
+                        font-size: 0.8em;
+                        display: flex;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .header_contacts_container {
+            width: fit-content;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            .header_contacts_btn {
+                width: fit-content;
+                padding: 0 1rem;
+                height: 3rem;
+                border: 0;
+                outline: 0;
+                background-color: #261e24;
+                color: #fcf6ee;
+                border-radius: 10px;
+                font-family: 'PitagonSansMono';
+                font-size: 1.1em;
+                cursor: pointer;
+            }
+        }
+    }
+}

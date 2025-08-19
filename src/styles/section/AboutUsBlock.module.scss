@@ -1,0 +1,164 @@
+$color_1: #c54914;
+$color_2: #c8b492;
+$color_3: #9bb3c3;
+$color_4: #799bb7;
+$color_5: #6286a3;
+$color_6: #72747a;
+$color_7: #947a78;
+$color_8: #4f5562;
+$color_9: #6d4f4f;
+$color_10: #261e24;
+$color_11: #dad1c9;
+$color_11_shade: #fcf6ee;
+
+.about_us_block {
+    width: 100%;
+    height: 79vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-color: transparent;
+
+    .about_us_container {
+        width: 100%;
+        height: 100%;
+        background-color: #222;
+        border-radius: 20px;
+        padding: 2rem;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-rows: 1fr 0.8fr;
+        gap: 1rem;
+
+        .about_us_block_top,
+        .about_us_block_bottom {
+            width: 100%;
+            height: 100%;
+        }
+
+        .about_us_block_top {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+
+            .about_us_block_top_left,
+            .about_us_block_top_right {
+                width: 100%;
+                height: 100%;
+            }
+
+            .about_us_block_top_left {
+                color: #fcf6ee;
+
+                .about_us_block_top_left_title {
+                    width: 100%;
+                    height: fit-content;
+
+                    h1 {
+                        font-family: 'Antosha';
+                        text-transform: uppercase;
+                        font-size: 9em;
+                    }
+                }
+
+                .about_us_block_top_left_text {
+                    width: 100%;
+                    height: fit-content;
+
+                    p {
+                        font-family: 'PitagonSansMono';
+                        font-size: 1.2em;
+                    }
+                }
+            }
+
+            .about_us_block_top_right {
+                .about_us_block_top_right_logo {
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                }
+            }
+        }
+
+        .about_us_block_bottom {
+
+            .about_us_block_bottom_text {
+                color: #fcf6ee;
+                height: 3.5em;
+                display: flex;
+                align-items: center;
+                justify-content: left;
+
+                h2 {
+                    font-family: 'PitagonSansMono';
+                    font-size: 3em;
+                }
+            }
+
+
+            .about_us_block_bottom_list {
+                width: 100%;
+                height: 12rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                gap: 1rem;
+                align-items: center;
+
+                .about_us_block_bottom_item {
+                    width: 100%;
+                    height: 90%;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    background-color: #9bb3c385;
+                    backdrop-filter: blur(5px);
+                    position: relative;
+
+                    p {
+                        font-family: 'PitagonSansMono';
+                        font-size: 1em;
+                        color: #fcf6ee;
+                    }
+
+                    .about_us_block_bottom_item_container {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 10;
+                        padding: 1rem;
+                        box-sizing: border-box;
+                    }
+
+                    .about_us_block_bottom_item_number {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border-radius: 10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 1;
+
+                        h1 {
+                            color: #4f5562;
+                            font-family: 'Antosha';
+                            font-size: 5em;
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
+}
