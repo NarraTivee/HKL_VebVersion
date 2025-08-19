@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/HKL_VebVersion",
+  base: "HKL_VebVersion",
   resolve: {
     alias: {
       '@': path.resolve(__dirname, "./src"),
