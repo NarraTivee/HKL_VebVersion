@@ -1,41 +1,175 @@
-$color_1: #c54914;
-$color_2: #c8b492;
-$color_3: #9bb3c3;
-$color_4: #799bb7;
-$color_5: #6286a3;
-$color_6: #72747a;
-$color_7: #947a78;
-$color_8: #4f5562;
-$color_9: #6d4f4f;
-$color_10: #261e24;
-$color_11: #dad1c9;
-$color_11_shade: #fcf6ee;
+// PREMIUM PALETTE — точно как во всех блоках
+$primary: #0d1b2a;
+$primary-light: #1b263b;
+$accent: #e0a75e;
+$accent-light: #f3c88c;
+$text-light: #f5f4f0;
+$text-muted: rgba(245, 244, 240, 0.65);
 
+// ================================
+// FOOTER
+// ================================
 .footer {
-    width: 100%;
-    height: auto;
-    background-color: #111;
-    padding: 1rem 2rem;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 5rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
 
-    .footer_container {
-        width: 100%;
-        height: 4rem;
-        background-color: #222;
-        border-radius: 20px;
+.footer_container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.8rem 3rem;
+  border-radius: 26px;
+  background: linear-gradient(
+                  170deg,
+                  rgba(13, 27, 42, 0.96) 0%,
+                  rgba(13, 27, 42, 0.90) 50%,
+                  rgba(27, 38, 59, 0.92) 100%
+  );
+  box-shadow:
+          0 25px 70px rgba(0, 0, 0, 0.65),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  position: relative;
+  border-top: 1px solid rgba(224, 167, 94, 0.15);
+}
 
-        .footer_container_content {
-            width: 100%;
-            height: 100%;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+// ================================
+// CONTENT
+// ================================
+.footer_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
 
-            p {
-                font-family: 'GeistMono';
-                font-size: 1em;
-            }
-        }
+// Логотип в футере
+.logo_wrapper {
+  animation: fadeInUp 1s ease-out;
+}
+
+.logo {
+  width: clamp(180px, 22vw, 300px);
+  height: clamp(180px, 22vw, 300px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 15px 40px rgba(224, 167, 94, 0.35));
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -35px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(243, 200, 140, 0.28), transparent 68%);
+    animation: footerPulse 6s ease-in-out infinite;
+  }
+}
+
+@keyframes footerPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+// Текст копирайта
+.copyright {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.5;
+  color: $text-muted;
+  letter-spacing: 1px;
+  animation: fadeInUp 1s ease-out 0.4s both;
+
+  span {
+    display: block;
+    margin-top: 0.4rem;
+    font-weight: 400;
+    font-size: 0.9em;
+    color: rgba(245, 244, 240, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  // Золотой акцент на год
+  &::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 80px;
+    margin: 0 auto 1.2rem;
+    background: linear-gradient(90deg, transparent, $accent, transparent);
+    border-radius: 2px;
+    opacity: 0.7;
+  }
+}
+
+// ================================
+// АНИМАЦИИ
+// ================================
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ================================
+// АДАПТИВ
+// ================================
+@media (max-width: 768px) {
+  .footer {
+    padding: 4rem 1.5rem 2.5rem;
+  }
+
+  .footer_container {
+    padding: 2.4rem 2rem;
+    border-radius: 22px;
+  }
+
+  .logo {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .footer_container {
+    padding: 2rem 1.6rem;
+    border-radius: 18px;
+  }
+
+  .logo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .copyright {
+    font-size: 1rem;
+
+    span {
+      font-size: 0.8rem;
     }
+  }
 }

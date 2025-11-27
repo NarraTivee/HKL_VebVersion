@@ -1,164 +1,256 @@
-$color_1: #c54914;
-$color_2: #c8b492;
-$color_3: #9bb3c3;
-$color_4: #799bb7;
-$color_5: #6286a3;
-$color_6: #72747a;
-$color_7: #947a78;
-$color_8: #4f5562;
-$color_9: #6d4f4f;
-$color_10: #261e24;
-$color_11: #dad1c9;
-$color_11_shade: #fcf6ee;
+// PREMIUM PALETTE — идентична WelcomBlock и ServicesBlock
+$primary: #0d1b2a;
+$primary-light: #1b263b;
+$accent: #e0a75e;
+$accent-light: #f3c88c;
+$text-light: #f5f4f0;
+$text-muted: rgba(245, 244, 240, 0.65);
 
+// ================================
+// BLOCK & CONTAINER
+// ================================
 .about_us_block {
-    width: 100%;
-    height: 79vh;
-    padding: 2rem;
-    box-sizing: border-box;
-    background-color: transparent;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
 
-    .about_us_container {
-        width: 100%;
-        height: 100%;
-        background-color: #222;
-        border-radius: 20px;
-        padding: 2rem;
-        box-sizing: border-box;
-        display: grid;
-        grid-template-rows: 1fr 0.8fr;
-        gap: 1rem;
+.about_us_container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 3.5rem;
+  border-radius: 26px;
+  background: linear-gradient(
+                  170deg,
+                  rgba(13, 27, 42, 0.95) 0%,
+                  rgba(13, 27, 42, 0.88) 50%,
+                  rgba(27, 38, 59, 0.88) 100%
+  );
+  box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.55),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  position: relative;
+}
 
-        .about_us_block_top,
-        .about_us_block_bottom {
-            width: 100%;
-            height: 100%;
-        }
+// ================================
+// HEADER: О НАС + ЛОГОТИП
+// ================================
+.about_us_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 3rem;
+}
 
-        .about_us_block_top {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1rem;
+.title_wrapper h1 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(3.2rem, 7vw, 5.8rem);
+  line-height: 1.05;
+  color: $text-light;
+  letter-spacing: 1.5px;
 
-            .about_us_block_top_left,
-            .about_us_block_top_right {
-                width: 100%;
-                height: 100%;
-            }
+  span {
+    color: $accent;
+    font-weight: 700;
+    opacity: 0.95;
+  }
 
-            .about_us_block_top_left {
-                color: #fcf6ee;
+  animation: fadeInLeft 0.9s ease-out;
+}
 
-                .about_us_block_top_left_title {
-                    width: 100%;
-                    height: fit-content;
+.logo_wrapper {
+  flex-shrink: 0;
+  animation: fadeInRight 0.9s ease-out;
+}
 
-                    h1 {
-                        font-family: 'Antosha';
-                        text-transform: uppercase;
-                        font-size: 9em;
-                    }
-                }
+.logo {
+  width: clamp(180px, 24vw, 320px);
+  height: clamp(180px, 24vw, 320px);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 12px 40px rgba(224, 167, 94, 0.4));
 
-                .about_us_block_top_left_text {
-                    width: 100%;
-                    height: fit-content;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(243, 200, 140, 0.3), transparent 70%);
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+}
 
-                    p {
-                        font-family: 'PitagonSansMono';
-                        font-size: 1.2em;
-                    }
-                }
-            }
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
 
-            .about_us_block_top_right {
-                .about_us_block_top_right_logo {
-                    width: 100%;
-                    height: 100%;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    background-position: center;
-                }
-            }
-        }
+// ================================
+// DESCRIPTION
+// ================================
+.about_us_description {
+  margin-bottom: 5rem;
+  padding-left: 1.6rem;
+  border-left: 5px solid $accent;
 
-        .about_us_block_bottom {
+  p {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+    line-height: 1.8;
+    color: $text-muted;
+    max-width: 900px;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+  }
+}
 
-            .about_us_block_bottom_text {
-                color: #fcf6ee;
-                height: 3.5em;
-                display: flex;
-                align-items: center;
-                justify-content: left;
+// ================================
+// WORKFLOW: КАК МЫ РАБОТАЕМ
+// ================================
+.workflow_section {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
 
-                h2 {
-                    font-family: 'PitagonSansMono';
-                    font-size: 3em;
-                }
-            }
+.workflow_title h2 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  line-height: 1.1;
+  color: $text-light;
+  letter-spacing: 1.2px;
 
+  span {
+    color: $accent;
+    font-weight: 700;
+  }
 
-            .about_us_block_bottom_list {
-                width: 100%;
-                height: 12rem;
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-                gap: 1rem;
-                align-items: center;
+  animation: fadeInLeft 0.9s ease-out;
+}
 
-                .about_us_block_bottom_item {
-                    width: 100%;
-                    height: 90%;
-                    box-sizing: border-box;
-                    border-radius: 10px;
-                    cursor: pointer;
-                    background-color: #9bb3c385;
-                    backdrop-filter: blur(5px);
-                    position: relative;
+.workflow_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.5rem;
+  counter-reset: step;
 
-                    p {
-                        font-family: 'PitagonSansMono';
-                        font-size: 1em;
-                        color: #fcf6ee;
-                    }
+  li {
+    position: relative;
+    padding: 1.8rem 2.2rem;
+    padding-left: 4.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+    color: $text-light;
+    line-height: 1.65;
+    transition: all 0.4s ease;
 
-                    .about_us_block_bottom_item_container {
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        z-index: 10;
-                        padding: 1rem;
-                        box-sizing: border-box;
-                    }
-
-                    .about_us_block_bottom_item_number {
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        border-radius: 10px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        z-index: 1;
-
-                        h1 {
-                            color: #4f5562;
-                            font-family: 'Antosha';
-                            font-size: 5em;
-                        }
-                    }
-                }
-
-            }
-
-        }
+    &::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      position: absolute;
+      left: 1.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: $accent;
+      opacity: 0.9;
     }
+
+    &:hover {
+      transform: translateY(-8px);
+      border-color: rgba($accent, 0.4);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.6);
+    }
+
+    animation: fadeInUp 0.7s ease-out forwards;
+    opacity: 0;
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{0.2s + $i * 0.12s};
+      }
+    }
+  }
+}
+
+// ================================
+// АНИМАЦИИ
+// ================================
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ================================
+// АДАПТИВ
+// ================================
+@media (max-width: 992px) {
+  .about_us_header {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .workflow_section {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .workflow_title h2 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .about_us_container {
+    padding: 3rem 2rem;
+  }
+
+  .workflow_list li {
+    padding: 1.4rem 1.8rem;
+    padding-left: 4.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about_us_block { padding: 4rem 1rem; }
+  .about_us_container { padding: 2.5rem 1.6rem; border-radius: 20px; }
+
+  .logo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .workflow_list li {
+    padding-left: 3.8rem;
+    font-size: 1rem;
+  }
 }

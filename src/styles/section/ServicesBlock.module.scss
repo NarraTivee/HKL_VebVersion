@@ -1,139 +1,233 @@
-$color_1: #c54914;
-$color_2: #c8b492;
-$color_3: #9bb3c3;
-$color_4: #799bb7;
-$color_5: #6286a3;
-$color_6: #72747a;
-$color_7: #947a78;
-$color_8: #4f5562;
-$color_9: #6d4f4f;
-$color_10: #261e24;
-$color_11: #dad1c9;
-$color_11_shade: #fcf6ee;
+// PREMIUM PALETTE — полностью как в WelcomBlock
+$primary: #0d1b2a;
+$primary-light: #1b263b;
+$accent: #e0a75e;
+$accent-light: #f3c88c;
+$text-light: #f5f4f0;
+$text-muted: rgba(245, 244, 240, 0.65);
 
+// ================================
+// BLOCK & CONTAINER
+// ================================
 .services_block {
-    height: 100vh;
-    width: 100%;
-    padding: 2rem;
-    box-sizing: border-box;
-    background-color: transparent;
+  width: 100%;
+  position: relative;
+  padding: 5rem 0;
+}
 
-    .services_block_container {
-        width: 100%;
-        height: 100%;
-        background-color: #222;
-        border-radius: 20px;
-        padding: 1rem;
-        box-sizing: border-box;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+.services_container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3.5rem 3rem;
+  border-radius: 26px;
+  background: linear-gradient(
+                  170deg,
+                  rgba(13, 27, 42, 0.95) 0%,
+                  rgba(13, 27, 42, 0.88) 50%,
+                  rgba(27, 38, 59, 0.88) 100%
+  );
+  box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.55),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
 
-        .services_block_left,
-        .services_block_right {
-            width: 100%;
-            height: 100%;
-            padding: 1rem;
-            box-sizing: border-box;
-            background-color: transparent;
-        }
+// ================================
+// HEADER — УСЛУГИ
+// ================================
+.services_header {
+  margin-bottom: 2.5rem;
 
-        .services_block_left {
-            .services_block_left_header {
-                width: 100%;
-                height: 50%;
-                color: #fcf6ee;
+  h1 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: $text-light;
+    letter-spacing: 3px;
+    animation: fadeInDown 0.9s ease-out;
+  }
+}
 
-                .services_block_left_title {
-                    width: 100%;
-                    height: auto;
+// ================================
+// DESCRIPTION
+// ================================
+.services_description {
+  margin-bottom: 3rem;
+  padding-left: 1.4rem;
+  border-left: 4px solid $accent;
 
-                    h1 {
-                        font-family: 'Antosha';
-                        text-transform: uppercase;
-                        color: #fcf6ee;
-                        font-size: 9em;
-                    }
-                }
+  p {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+    line-height: 1.75;
+    color: $text-muted;
 
-                .services_block_left_title_text {
-                    width: 100%;
-                    height: fit-content;
-
-                    p {
-                        font-family: 'PitagonSansMono';
-                        font-size: 1.2em;
-                    }
-                }
-            }
-
-            .services_block_left_bottom {
-                width: 100%;
-                height: 50%;
-
-                .services_block_left_list {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-between;
-
-                    .services_block_left_item {
-                        width: 100%;
-                        height: fit-content;
-                        display: flex;
-                        align-items: center;
-                        gap: 1rem;
-                        padding: 1rem;
-                        box-sizing: border-box;
-                        background-color: #4f5562;
-                        border-radius: 10px;
-                        cursor: pointer;
-
-
-
-                        p {
-                            font-family: 'PitagonSansMono';
-                            font-size: 1em;
-                            color: #fcf6ee;
-                        }
-
-                        &::before {
-                            content: '';
-                            display: block;
-                            width: 0.4rem;
-                            height: 0.4rem;
-                            background-color: #fcf6ee;
-                            border-radius: 50%;
-                        }
-                    }
-                }
-            }
-        }
-
-        .services_block_right {
-
-            .services_block_right_img_container {
-                width: 100%;
-                height: 100%;
-                background-color: transparent;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr 1fr;
-                gap: 1.5rem;
-
-                .services_block_right_img {
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 10px;
-                    background-size: cover;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    cursor: pointer;
-
-                }
-            }
-        }
+    .highlight {
+      color: $accent;
+      font-weight: 700;
     }
+  }
+}
+
+// ================================
+// SERVICES LIST
+// ================================
+.services_list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 5rem 0;
+  display: grid;
+  gap: 1.4rem;
+  counter-reset: service;
+
+  li {
+    position: relative;
+    padding: 1.6rem 2rem;
+    padding-left: 4.2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    color: $text-light;
+    line-height: 1.65;
+    transition: all 0.35s ease;
+
+    &::before {
+      counter-increment: service;
+      content: "0" counter(service);
+      position: absolute;
+      left: 1.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: $accent;
+      opacity: 0.9;
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba($accent, 0.35);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+    }
+
+    animation: fadeInUp 0.7s ease-out forwards;
+    opacity: 0;
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) { animation-delay: #{0.15s + $i * 0.1s}; }
+    }
+  }
+}
+
+// ================================
+// GALLERY — НАШИ РАБОТЫ (в стиле WelcomBlock)
+// ================================
+.gallery_section {
+  margin-top: 2rem;
+}
+
+.gallery_title {
+  margin-bottom: 3rem;
+
+  h2 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 1.1;
+    color: $text-light;
+    letter-spacing: 1.5px;
+
+    span {
+      color: $accent;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+
+    animation: fadeInUp 0.9s ease-out;
+  }
+}
+
+.gallery_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   // ← строго 3 колонки, как было
+  gap: 1.8rem;
+}
+
+.gallery_item {
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.45s ease;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(13, 27, 42, 0.1),
+            rgba(224, 167, 94, 0.2) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  &:hover {
+    transform: translateY(-14px) scale(1.04);
+    box-shadow: 0 30px 60px rgba(224, 167, 94, 0.3);
+    border-color: rgba($accent, 0.4);
+
+    &::after { opacity: 1; }
+  }
+
+  animation: fadeInUp 0.7s ease-out forwards;
+  opacity: 0;
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) { animation-delay: #{0.8s + $i * 0.1s}; }
+  }
+}
+
+// ================================
+// АНИМАЦИИ
+// ================================
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ================================
+// АДАПТИВ
+// ================================
+@media (max-width: 900px) {
+  .gallery_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .services_container { padding: 2.5rem 1.8rem; }
+  .gallery_grid { grid-template-columns: 1fr; }
+  .services_list li { padding-left: 3.8rem; }
 }

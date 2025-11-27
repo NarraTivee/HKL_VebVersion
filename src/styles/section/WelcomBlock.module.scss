@@ -1,151 +1,265 @@
-$color_1: #c54914;
-$color_2: #c8b492;
-$color_3: #9bb3c3;
-$color_4: #799bb7;
-$color_5: #6286a3;
-$color_6: #72747a;
-$color_7: #947a78;
-$color_8: #4f5562;
-$color_9: #6d4f4f;
-$color_10: #261e24;
-$color_11: #dad1c9;
-$color_11_shade: #fcf6ee;
+// NEW PREMIUM PALETTE
+$primary: #0d1b2a;
+$primary-light: #1b263b;
+$accent: #e0a75e;
+$accent-light: #f3c88c;
 
+$text-light: #f5f4f0;
+$text-muted: rgba(245, 244, 240, 0.65);
+
+// ================================
+// BLOCK
+// ================================
 .welcom_block {
-    width: 100%;
-    height: 100vh;
-    padding: 2rem;
-    box-sizing: border-box;
-    background-color: transparent;
+  width: 100%;
+  height: 100vh;  // ← оставляем как было
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative;
+}
 
-    .welcom_block_container {
-        width: 100%;
-        height: 100%;
-        padding: 1rem;
-        border-radius: 20px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
+// ================================
+// CONTAINER
+// ================================
+.welcom_container {
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-radius: 26px;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
 
-        .welcom_block_content {
-            width: 100%;
-            height: calc(100% - 4rem);
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1rem;
+  background: linear-gradient(
+                  170deg,
+                  rgba(13, 27, 42, 0.95) 0%,
+                  rgba(13, 27, 42, 0.88) 50%,
+                  rgba(27, 38, 59, 0.88) 100%
+  );
 
-            .welcom_block_left,
-            .welcom_block_right {
-                width: 100%;
-                height: 100%;
-            }
+  box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.55),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 
-            .welcom_block_left {
+  backdrop-filter: blur(8px);
+}
 
-                .welcom_block_about_us {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+// ================================
+// BACKGROUND IMAGE
+// ================================
+.background_image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
 
-                    .welcom_block_about_us_container {
-                        width: fit-content;
-                        height: fit-content;
-                        display: flex;
-                        align-items: center;
-                        gap: 1rem;
+  opacity: 0.3;
+  filter: brightness(0.85) contrast(1.05);
 
-                        .welcom_block_about_us_text {
-                            max-width: 18rem;
-                            height: fit-content;
-                            background-color: #6286a381;
-                            backdrop-filter: blur(3px);
-                            padding: 1rem;
-                            box-sizing: border-box;
-                            border-radius: 5px;
-                            box-shadow: 2px 2px 20px #33333370;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: space-between;
-                            gap: 1rem;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+                    120deg,
+                    rgba(0, 0, 0, 0.6) 0%,
+                    rgba(0, 0, 0, 0.3) 40%,
+                    rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+}
 
-                            p {
-                                font-family: 'PitagonSansMono';
-                                font-size: 1.3em;
-                                color: #fcf6ee;
-                            }
+// ================================
+// CONTENT GRID
+// ================================
+.welcom_content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
 
-                            .welcom_block_about_us_btn_container {
-                                width: 100%;
-                                height: 3rem;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                padding: 0;
-                                box-sizing: border-box;
-                                background-color: #6286a3;
-                                border-radius: 2px;
+// ================================
+// TEXT CARD
+// ================================
+.welcom_text_card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 18px;
+  padding: 2.2rem;
+  backdrop-filter: blur(18px);
 
-                                a {
-                                    flex: 1;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    font-family: 'SedgwickAve';
-                                    font-size: 1.3em;
-                                    color: #261e24;
-                                    cursor: pointer;
-                                }
-                            }
-                        }
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
+  box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.45),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 
-                        .welcom_block_about_us_title {
-                            width: fit-content;
-                            height: fit-content;
+  animation: fadeInLeft 0.8s ease-out;
+}
 
-                            h1 {
-                                font-size: 10em;
-                                line-height: 1em;
-                                font-family: 'Antosha';
-                                text-transform: uppercase;
-                                color: #fcf6ee;
-                                text-shadow: 2px 2px 20px #444;
+.welcom_title h1 {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  color: $text-light;
+  letter-spacing: 1px;
 
-                                span {
-                                    font-family: 'Modak';
-                                    font-size: 0.8em;
-                                    text-align: center;
-                                    color: lightblue; // lgbt
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+  span {
+    color: $accent;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+}
 
-            .welcom_block_right {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-sizing: border-box;
+.welcom_description {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid $accent;
 
-                .welcom_block_logo_container {
-                    width: 100%;
-                    height: 100%;
-                    background-repeat: no-repeat;
-                    background-position: left;
-                    background-size: 70%;
-                }
-            }
+  p {
+    color: $text-muted;
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    line-height: 1.65;
+    font-family: "Inter", sans-serif;
+  }
+}
 
-        }
-    }
+// ================================
+// LOGO
+// ================================
+.logo_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.logo {
+  width: clamp(200px, 26vw, 350px);
+  height: clamp(200px, 26vw, 350px);
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  filter: drop-shadow(0 10px 30px rgba(224, 167, 94, 0.35));
+
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -25px;
+    border-radius: 50%;
+    background: radial-gradient(
+                    circle,
+                    rgba(243, 200, 140, 0.25),
+                    transparent 70%
+    );
+  }
+}
+
+// ================================
+// ANIMATIONS
+// ================================
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// ================================
+// ADAPTIVE — ТОЛЬКО ФИКС ДЛЯ МОБИЛЬКИ
+// ================================
+@media (max-width: 900px) {
+  .welcom_container {
+    height: unset;
+  }
+
+  .welcom_content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .logo_wrapper {
+    order: -1;  // ← логотип сверху, как было
+  }
+
+  .logo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .welcom_text_card {
+    padding: 1.8rem;  // ← НОВОЕ: уменьшаем padding карточки
+  }
+
+  .welcom_description {
+    margin-top: 0.8rem;  // ← НОВОЕ: меньше отступ сверху описания
+    padding-left: 0.8rem;  // ← НОВОЕ: меньше left-border
+  }
+
+  .welcom_description p {
+    font-size: 1rem;  // ← НОВОЕ: фиксированный размер текста на планшете
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcom_block {
+    padding: 1rem;  // ← как было, но теперь с учётом
+  }
+
+  .welcom_container {
+    padding: 1.2rem;  // ← как было
+    height: unset;
+  }
+
+  .welcom_text_card {
+    padding: 1.2rem;  // ← НОВОЕ: ещё меньше на маленьких экранах
+  }
+
+  .welcom_title h1 {
+    font-size: 1.8rem;  // ← как было
+  }
+
+  .welcom_description {
+    margin-top: 0.6rem;  // ← НОВОЕ: минимальный отступ
+    padding-left: 0.6rem;  // ← НОВОЕ: минимальный left-border
+    border-left-width: 2px;  // ← НОВОЕ: тоньше линия
+  }
+
+  .welcom_description p {
+    font-size: 0.95rem;  // ← НОВОЕ: чуть меньше текст, чтобы влезло
+    line-height: 1.5;  // ← НОВОЕ: плотнее строки
+  }
+
+  .logo {
+    width: 130px;
+    height: 130px;  // ← как было
+  }
 }
