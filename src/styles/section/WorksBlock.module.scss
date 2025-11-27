@@ -1,0 +1,148 @@
+// PREMIUM PALETTE — полностью как в WelcomBlock
+$primary: #0d1b2a;
+$primary-light: #1b263b;
+$accent: #e0a75e;
+$accent-light: #f3c88c;
+$text-light: #f5f4f0;
+$text-muted: rgba(245, 244, 240, 0.65);
+
+// ================================
+// BLOCK & CONTAINER
+// ================================
+.works_block {
+  width: 100%;
+  position: relative;
+  padding-top: 6rem;
+}
+
+.works_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// ================================
+// HEADER — НАШИ РАБОТЫ
+// ================================
+.works_header {
+  margin-bottom: 2.5rem;
+
+  h1 {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    color: $text-light;
+    letter-spacing: 1.5px;
+
+    span {
+      color: $accent;
+      font-weight: 700;
+      opacity: 0.95;
+    }
+
+    animation: fadeInDown 0.9s ease-out;
+  }
+}
+
+// ================================
+// GALLERY GRID
+// ================================
+.works_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.works_item {
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+                    135deg,
+                    rgba(13, 27, 42, 0.2),
+                    rgba(224, 167, 94, 0.25) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  animation: fadeInUp 0.7s ease-out forwards;
+  opacity: 0;
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) { animation-delay: #{0.15s + $i * 0.1s}; }
+  }
+}
+
+// ================================
+// АНИМАЦИИ
+// ================================
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ================================
+// АДАПТИВ
+// ================================
+@media (max-width: 900px) {
+  .works_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .works_block {
+    padding: 3rem 0;
+  }
+
+  .works_container {
+    padding: 0 1.5rem;
+  }
+
+  .works_header {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .works_block {
+    padding: 2.5rem 0;
+  }
+
+  .works_container {
+    padding: 0 1rem;
+  }
+
+  .works_header {
+    margin-bottom: 1.5rem;
+  }
+
+  .works_grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .works_item {
+    border-radius: 16px;
+  }
+}

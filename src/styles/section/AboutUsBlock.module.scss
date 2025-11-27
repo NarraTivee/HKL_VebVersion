@@ -12,36 +12,20 @@ $text-muted: rgba(245, 244, 240, 0.65);
 .about_us_block {
   width: 100%;
   position: relative;
-  overflow: hidden;
+  padding-top: 6rem;
 }
 
 .about_us_container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 3.5rem;
-  border-radius: 26px;
-  background: linear-gradient(
-                  170deg,
-                  rgba(13, 27, 42, 0.95) 0%,
-                  rgba(13, 27, 42, 0.88) 50%,
-                  rgba(27, 38, 59, 0.88) 100%
-  );
-  box-shadow:
-          0 25px 60px rgba(0, 0, 0, 0.55),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(14px);
-  position: relative;
+  padding: 0 2rem;
 }
 
 // ================================
-// HEADER: О НАС + ЛОГОТИП
+// HEADER: О НАС
 // ================================
 .about_us_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4rem;
-  gap: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .title_wrapper h1 {
@@ -49,8 +33,8 @@ $text-muted: rgba(245, 244, 240, 0.65);
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(3.2rem, 7vw, 5.8rem);
-  line-height: 1.05;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
   color: $text-light;
   letter-spacing: 1.5px;
 
@@ -63,49 +47,62 @@ $text-muted: rgba(245, 244, 240, 0.65);
   animation: fadeInLeft 0.9s ease-out;
 }
 
-.logo_wrapper {
-  flex-shrink: 0;
-  animation: fadeInRight 0.9s ease-out;
-}
-
-.logo {
-  width: clamp(180px, 24vw, 320px);
-  height: clamp(180px, 24vw, 320px);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: drop-shadow(0 12px 40px rgba(224, 167, 94, 0.4));
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -30px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(243, 200, 140, 0.3), transparent 70%);
-    animation: pulseGlow 4s ease-in-out infinite;
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.4; transform: scale(0.95); }
-  50% { opacity: 0.7; transform: scale(1.05); }
-}
-
 // ================================
-// DESCRIPTION
+// DESCRIPTION - БЛОКИ
 // ================================
 .about_us_description {
-  margin-bottom: 5rem;
-  padding-left: 1.6rem;
-  border-left: 5px solid $accent;
+  margin-bottom: 6rem;
+  display: grid;
+  gap: 2rem;
+  max-width: 1100px;
+}
+
+.description_block {
+  padding-left: 1.2rem;
+  border-left: 4px solid $accent;
+  animation: fadeInUp 0.8s ease-out both;
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  h3 {
+    margin: 0 0 0.8rem 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1.3vw, 1.25rem);
+    color: $accent;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 
   p {
     font-family: "Inter", sans-serif;
-    font-size: clamp(1.15rem, 1.5vw, 1.35rem);
-    line-height: 1.8;
+    font-size: clamp(0.9rem, 1.1vw, 0.98rem);
+    line-height: 1.7;
     color: $text-muted;
-    max-width: 900px;
-    animation: fadeInUp 0.8s ease-out 0.3s both;
+    margin: 0 0 0.8rem 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: $accent-light;
+      font-weight: 600;
+    }
   }
 }
 
@@ -124,7 +121,7 @@ $text-muted: rgba(245, 244, 240, 0.65);
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   line-height: 1.1;
   color: $text-light;
   letter-spacing: 1.2px;
@@ -142,42 +139,34 @@ $text-muted: rgba(245, 244, 240, 0.65);
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
   counter-reset: step;
 
   li {
     position: relative;
-    padding: 1.8rem 2.2rem;
-    padding-left: 4.8rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+    padding-left: 2.5rem;
     font-family: "Inter", sans-serif;
-    font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
     color: $text-light;
-    line-height: 1.65;
-    transition: all 0.4s ease;
+    line-height: 1.7;
+    transition: all 0.3s ease;
 
     &::before {
       counter-increment: step;
-      content: "0" counter(step);
+      content: counter(step) ".";
       position: absolute;
-      left: 1.8rem;
-      top: 50%;
-      transform: translateY(-50%);
+      left: 0;
+      top: 0;
       font-family: "Montserrat", sans-serif;
-      font-weight: 900;
-      font-size: 1.8rem;
+      font-weight: 700;
       color: $accent;
-      opacity: 0.9;
+      font-size: 1.1rem;
+      line-height: inherit;
     }
 
     &:hover {
-      transform: translateY(-8px);
-      border-color: rgba($accent, 0.4);
-      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.6);
+      color: $accent-light;
+      transform: translateX(6px);
     }
 
     animation: fadeInUp 0.7s ease-out forwards;
@@ -185,7 +174,7 @@ $text-muted: rgba(245, 244, 240, 0.65);
 
     @for $i from 1 through 6 {
       &:nth-child(#{$i}) {
-        animation-delay: #{0.2s + $i * 0.12s};
+        animation-delay: #{0.5s + $i * 0.1s};
       }
     }
   }
@@ -195,62 +184,101 @@ $text-muted: rgba(245, 244, 240, 0.65);
 // АНИМАЦИИ
 // ================================
 @keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // ================================
 // АДАПТИВ
 // ================================
 @media (max-width: 992px) {
-  .about_us_header {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-  }
-
   .workflow_section {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2.5rem;
   }
 
   .workflow_title h2 {
-    text-align: center;
+    text-align: left;
   }
 }
 
 @media (max-width: 768px) {
-  .about_us_container {
-    padding: 3rem 2rem;
+  .workflow_list li {
+    padding-left: 2.2rem;
   }
 
-  .workflow_list li {
-    padding: 1.4rem 1.8rem;
-    padding-left: 4.2rem;
+  .about_us_block {
+    padding: 3rem 0;
+  }
+
+  .about_us_container {
+    padding: 0 1.5rem;
+  }
+
+  .about_us_description {
+    gap: 1.5rem;
   }
 }
 
-@media (max-width: 480px) {
-  .about_us_block { padding: 4rem 1rem; }
-  .about_us_container { padding: 2.5rem 1.6rem; border-radius: 20px; }
+@media (max-width: 600px) {
+  .workflow_list {
+    gap: 0.85rem;
 
-  .logo {
-    width: 160px;
-    height: 160px;
+    li {
+      padding-left: 2rem;
+      font-size: 0.92rem;
+
+      &::before {
+        font-size: 1rem;
+      }
+    }
   }
 
-  .workflow_list li {
-    padding-left: 3.8rem;
-    font-size: 1rem;
+  .about_us_block {
+    padding: 2.5rem 0;
+  }
+
+  .about_us_container {
+    padding: 0 1rem;
+  }
+
+  .about_us_header {
+    margin-bottom: 2rem;
+  }
+
+  .about_us_description {
+    margin-bottom: 3rem;
+    gap: 1.2rem;
+  }
+
+  .description_block {
+    h3 {
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 0.88rem;
+    }
+  }
+
+  .workflow_section {
+    gap: 2rem;
   }
 }

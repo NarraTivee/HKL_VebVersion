@@ -5,7 +5,9 @@ $navy_dark: #0b1c2c;
 $navy_mid: #1a2f44;
 $navy_light: #283c51;
 $gold: #c1a878;
+$accent: #e0a75e;
 $light: #e7e2db;
+$text-light: #f5f4f0;
 $glass_light: rgba(255, 255, 255, 0.08);
 $glass_border: rgba(255, 255, 255, 0.12);
 
@@ -16,7 +18,7 @@ $glass_border: rgba(255, 255, 255, 0.12);
 .header {
   width: 100%;
   position: relative;
-  z-index: 10;
+  z-index: 100;
   margin-bottom: 2rem;
 
   .header_container {
@@ -24,143 +26,405 @@ $glass_border: rgba(255, 255, 255, 0.12);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     padding: 1rem 1.5rem;
     border-radius: 16px;
-
-    background: linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.03) 0%,
-                    rgba(255,255,255,0.06) 100%
-    );
-
     backdrop-filter: blur(14px);
     border: 1px solid $glass_border;
 
     box-shadow:
-            0 8px 24px rgba(0,0,0,0.25),
-            inset 0 1px 0 rgba(255,255,255,0.05);
+            0 8px 24px rgba(0, 0, 0, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
     animation: fadeInHeader 0.5s ease-out;
 
     @keyframes fadeInHeader {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* =======================
-       LEFT SIDE
-       ======================= */
-    .header_left {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-
-      .header_logo {
-        a {
-          display: flex;
-          align-items: center;
-          text-decoration: none;
-
-          h1 {
-            font-family: 'Antosha', sans-serif;
-            font-size: clamp(1.2rem, 2vw, 1.7rem);
-            margin: 0;
-
-            background: linear-gradient(
-                            135deg,
-                            $gold 0%,
-                            $light 50%,
-                            $gold 100%
-            );
-
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            animation: goldShift 8s ease infinite;
-
-            @keyframes goldShift {
-              0%, 100% { background-position: 0% 50%; }
-              50%      { background-position: 100% 50%; }
-            }
-
-            filter: drop-shadow(0 0 8px rgba(0,0,0,0.35));
-            transition: filter 0.3s ease;
-          }
-
-          &:hover h1 {
-            filter: drop-shadow(0 0 12px rgba(193,168,120,0.35));
-          }
-        }
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
 
-      /* =======================
-         ROUTING MENU
-         ======================= */
-      .header_routing_list {
+  /* =======================
+     LEFT SIDE
+     ======================= */
+  .header_left {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    .header_logo {
+      a {
         display: flex;
-        gap: 0.7rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
+        align-items: center;
+        text-decoration: none;
 
-        .header_routing_items {
-          a {
-            font-family: 'PitagonSansMono', monospace;
-            font-size: clamp(0.9rem, 1vw, 1rem);
-            text-decoration: none;
+        h1 {
+          font-family: "Antosha", sans-serif;
+          font-size: clamp(1.2rem, 2vw, 1.7rem);
+          margin: 0;
 
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+          background: linear-gradient(
+                          135deg,
+                          $gold 0%,
+                          $light 50%,
+                          $gold 100%
+          );
 
-            color: rgba(231,226,219,0.9);
-            transition: all 0.3s ease;
+          background-size: 200% 200%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
 
-            &:hover {
-              color: $light;
-              background: rgba(255,255,255,0.07);
-              backdrop-filter: blur(4px);
+          animation: goldShift 8s ease infinite;
+
+          @keyframes goldShift {
+            0%,
+            100% {
+              background-position: 0% 50%;
             }
-            &:active {
-              background: rgba(255,255,255,0.1);
+            50% {
+              background-position: 100% 50%;
             }
           }
+
+          filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.35));
+          transition: filter 0.3s ease;
+        }
+
+        &:hover h1 {
+          filter: drop-shadow(0 0 12px rgba(193, 168, 120, 0.35));
         }
       }
     }
+  }
 
-    /* =======================
-       CONTACT BUTTON
-       ======================= */
-    .header_contacts_container {
-      .header_contacts_btn {
-        font-family: 'PitagonSansMono', monospace;
+  /* =======================
+     DESKTOP NAVIGATION
+     ======================= */
+  .header_routing_desktop {
+    display: flex;
+  }
+
+  .header_routing_list {
+    display: flex;
+    gap: 0.7rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .header_routing_items {
+      a {
+        display: block;
+        font-family: "PitagonSansMono", monospace;
         font-size: clamp(0.9rem, 1vw, 1rem);
-        font-weight: 600;
-
-        padding: 0.7rem 1.5rem;
-        border-radius: 10px;
-
-        color: $navy_dark;
-
-        background: linear-gradient(135deg, $gold 0%, lighten($gold, 10%) 100%);
-        border: 1px solid rgba(193,168,120,0.4);
-
-        box-shadow: 0 6px 20px rgba(193,168,120,0.25);
+        text-decoration: none;
         cursor: pointer;
 
-        transition: all 0.25s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+
+        color: rgba(231, 226, 219, 0.9);
+        transition: all 0.3s ease;
 
         &:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 28px rgba(193,168,120,0.4);
+          color: $light;
+          background: rgba(255, 255, 255, 0.07);
+          backdrop-filter: blur(4px);
         }
 
         &:active {
-          transform: translateY(0);
+          background: rgba(255, 255, 255, 0.1);
         }
       }
+    }
+  }
+
+  /* =======================
+     BURGER BUTTON (в header)
+     ======================= */
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    position: relative;
+    z-index: 101;
+
+    span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: $light;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    &:hover span {
+      background: $accent;
+    }
+
+    &.burger_active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translateY(10px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-10px);
+      }
+    }
+  }
+}
+/* =======================
+   BURGER CLOSE (в меню)
+   ======================= */
+.burger_close {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10002;
+  transition: all 0.3s ease;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: $light;
+    border-radius: 2px;
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+
+  span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  span:nth-child(2) {
+    opacity: 0;
+  }
+
+  span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba($accent, 0.3);
+
+    span {
+      background: $accent;
+    }
+  }
+}
+/* =======================
+   MOBILE MENU (через Portal)
+   ======================= */
+.mobile_menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 85%;
+  max-width: 420px;
+  height: 100vh;
+  height: 100dvh;
+
+  background: linear-gradient(
+                  180deg,
+                  rgba(13, 27, 42, 0.98) 0%,
+                  rgba(27, 38, 59, 0.98) 100%
+  );
+
+  backdrop-filter: blur(24px);
+  border-left: 1px solid rgba(224, 167, 94, 0.15);
+
+  box-shadow:
+          -10px 0 60px rgba(0, 0, 0, 0.6),
+          inset 1px 0 0 rgba(255, 255, 255, 0.05);
+
+  z-index: 10001;
+
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  // Декоративный элемент
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: radial-gradient(
+                    ellipse at top,
+                    rgba(224, 167, 94, 0.08) 0%,
+                    transparent 70%
+    );
+    pointer-events: none;
+  }
+}
+
+.mobile_nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 7rem 2.5rem 2.5rem;
+  overflow-y: auto;
+  position: relative;
+
+  // Заголовок меню
+  &::before {
+    content: "МЕНЮ";
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: $accent;
+    opacity: 0.9;
+  }
+}
+
+.mobile_routing_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  li {
+    opacity: 0;
+    animation: fadeInItem 0.5s ease forwards;
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{0.1s + $i * 0.1s};
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(245, 244, 240, 0.85);
+      cursor: pointer;
+
+      padding: 1.2rem 1.5rem;
+      border-radius: 14px;
+      border: 1px solid transparent;
+
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(8px);
+
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+
+      // Декоративная линия
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, $accent, transparent);
+        transition: width 0.4s ease;
+      }
+
+      &:hover {
+        color: $text-light;
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba($accent, 0.25);
+        transform: translateX(8px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &:active {
+        transform: translateX(8px) scale(0.98);
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+  }
+}
+
+@keyframes fadeInItem {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+// Счетчик для номеров
+.mobile_routing_list {
+  counter-reset: item;
+}
+
+/* =======================
+   OVERLAY (через Portal)
+   ======================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  animation: fadeIn 0.3s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }
@@ -169,53 +433,148 @@ $glass_border: rgba(255, 255, 255, 0.12);
    RESPONSIVE
    ======================= */
 
-@media (max-width: 768px) {
+// Планшеты
+@media (max-width: 1024px) {
   .header {
-    margin-bottom: 1.3rem;
+    .header_left {
+      gap: 2rem;
+    }
+
+    .header_routing_list {
+      gap: 0.5rem;
+
+      .header_routing_items a {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.92rem;
+      }
+    }
+  }
+}
+
+// Средние экраны — скрываем навигацию, показываем бургер
+@media (max-width: 900px) {
+  .header {
+    margin-bottom: 1.5rem;
+
+    .header_container {
+      padding: 1rem 1.2rem;
+    }
+
+    .header_routing_desktop {
+      display: none;
+    }
+
+    .burger {
+      display: flex;
+    }
+  }
+}
+
+// Мобильные
+@media (max-width: 640px) {
+  .header {
+    margin-bottom: 1.2rem;
 
     .header_container {
       padding: 0.9rem 1rem;
+      border-radius: 14px;
+    }
 
-      .header_left {
-        gap: 1.8rem;
+    .header_logo a h1 {
+      font-size: 1.3rem;
+    }
 
-        .header_routing_list {
-          gap: 0.4rem;
+    .burger_close {
+      top: 1.5rem;
+      right: 1.5rem;
+      padding: 0.7rem;
+    }
 
-          a {
-            padding: 0.45rem 0.8rem;
-            font-size: 0.85rem;
-          }
+    .mobile_menu {
+      width: 90%;
+      max-width: 360px;
+    }
+
+    .mobile_nav {
+      padding: 6rem 2rem 2rem;
+
+      &::before {
+        top: 2rem;
+        left: 2rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    .mobile_routing_list {
+      gap: 0.7rem;
+
+      li a {
+        font-size: 1.05rem;
+        padding: 1.1rem 1.3rem;
+
+        &::before {
+          font-size: 0.8rem;
+          margin-right: 1rem;
         }
       }
     }
   }
 }
 
-@media (max-width: 480px) {
+// Очень маленькие экраны
+@media (max-width: 380px) {
   .header {
     .header_container {
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
+      padding: 0.8rem 0.9rem;
+    }
 
-      .header_left {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        gap: 1rem;
+    .header_logo a h1 {
+      font-size: 1.15rem;
+    }
 
-        .header_routing_list {
-          flex-wrap: wrap;
-          justify-content: flex-start;
-          width: 100%;
-        }
+    .burger {
+      span {
+        width: 24px;
+        height: 2px;
       }
+    }
 
-      .header_contacts_container {
-        width: 100%;
-        .header_contacts_btn {
-          width: 100%;
+    .burger_close {
+      top: 1.2rem;
+      right: 1.2rem;
+      padding: 0.6rem;
+
+      span {
+        width: 24px;
+        height: 2px;
+      }
+    }
+
+    .mobile_menu {
+      width: 100%;
+      max-width: none;
+    }
+
+    .mobile_nav {
+      padding: 5.5rem 1.5rem 1.5rem;
+
+      &::before {
+        top: 1.5rem;
+        left: 1.5rem;
+        font-size: 1.1rem;
+      }
+    }
+
+    .mobile_routing_list {
+      gap: 0.6rem;
+
+      li a {
+        font-size: 1rem;
+        padding: 1rem 1.2rem;
+
+        &::before {
+          font-size: 0.75rem;
+          margin-right: 0.9rem;
         }
       }
     }

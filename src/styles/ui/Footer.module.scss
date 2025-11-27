@@ -1,175 +1,328 @@
-// PREMIUM PALETTE — точно как во всех блоках
-$primary: #0d1b2a;
-$primary-light: #1b263b;
 $accent: #e0a75e;
-$accent-light: #f3c88c;
 $text-light: #f5f4f0;
-$text-muted: rgba(245, 244, 240, 0.65);
+$text-muted: rgba(245, 244, 240, 0.62);
+$text-dim: rgba(245, 244, 240, 0.45);
 
-// ================================
-// FOOTER
-// ================================
 .footer {
   width: 100%;
-  padding: 5rem 2rem 3rem;
+  margin-top: 10rem;
   position: relative;
-  overflow: hidden;
-}
-
-.footer_container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2.8rem 3rem;
-  border-radius: 26px;
   background: linear-gradient(
-                  170deg,
-                  rgba(13, 27, 42, 0.96) 0%,
-                  rgba(13, 27, 42, 0.90) 50%,
-                  rgba(27, 38, 59, 0.92) 100%
+                  180deg,
+                  rgba(13, 27, 42, 0) 0%,
+                  rgba(13, 27, 42, 0.6) 20%,
+                  rgba(13, 27, 42, 0.95) 100%
   );
-  box-shadow:
-          0 25px 70px rgba(0, 0, 0, 0.65),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  position: relative;
-  border-top: 1px solid rgba(224, 167, 94, 0.15);
+
+  // Декоративная линия сверху
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(224, 167, 94, 0.3) 20%,
+                    rgba(224, 167, 94, 0.3) 80%,
+                    transparent
+    );
+  }
 }
 
-// ================================
-// CONTENT
-// ================================
-.footer_content {
+.footer_inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem 3rem;
+}
+
+// Основной контент
+.main_content {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 4rem;
+  padding-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(224, 167, 94, 0.12);
+}
+
+// Секция бренда
+.brand_section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 1.8rem;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-// Логотип в футере
-.logo_wrapper {
-  animation: fadeInUp 1s ease-out;
 }
 
 .logo {
-  width: clamp(180px, 22vw, 300px);
-  height: clamp(180px, 22vw, 300px);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  filter: drop-shadow(0 15px 40px rgba(224, 167, 94, 0.35));
+  width: 140px;
+  height: auto;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 16px rgba(224, 167, 94, 0.2));
+  transition: opacity 0.3s ease;
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -35px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(243, 200, 140, 0.28), transparent 68%);
-    animation: footerPulse 6s ease-in-out infinite;
+  &:hover {
+    opacity: 1;
   }
 }
 
-@keyframes footerPulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(0.92);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
-}
-
-// Текст копирайта
-.copyright {
+.brand_description {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  line-height: 1.5;
-  color: $text-muted;
-  letter-spacing: 1px;
-  animation: fadeInUp 1s ease-out 0.4s both;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: $text-light;
+  line-height: 1.6;
+  opacity: 0.88;
 
   span {
     display: block;
-    margin-top: 0.4rem;
+    margin-top: 0.6rem;
+    font-size: 0.88rem;
+    color: $accent;
     font-weight: 400;
-    font-size: 0.9em;
-    color: rgba(245, 244, 240, 0.5);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  // Золотой акцент на год
-  &::before {
-    content: "";
-    display: block;
-    height: 2px;
-    width: 80px;
-    margin: 0 auto 1.2rem;
-    background: linear-gradient(90deg, transparent, $accent, transparent);
-    border-radius: 2px;
-    opacity: 0.7;
+    opacity: 0.85;
   }
 }
 
-// ================================
-// АНИМАЦИИ
-// ================================
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+// Секция контактов
+.contacts_section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.section_title {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: $accent;
+  opacity: 0.9;
+}
+
+.contacts_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem 3rem;
+}
+
+.contact_group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.contact_item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: "Inter", sans-serif;
+
+  .phone {
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: $text-light;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $accent;
+    }
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .messengers {
+    font-size: 0.82rem;
+    color: $text-dim;
+    letter-spacing: 0.5px;
   }
 }
 
-// ================================
-// АДАПТИВ
-// ================================
-@media (max-width: 768px) {
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.8rem;
+  margin-top: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: $text-light;
+  text-decoration: none;
+  background: rgba(224, 167, 94, 0.08);
+  border: 1px solid rgba(224, 167, 94, 0.2);
+  border-radius: 12px;
+  width: fit-content;
+  transition: all 0.3s ease;
+
+  svg {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    background: rgba(224, 167, 94, 0.15);
+    border-color: rgba(224, 167, 94, 0.35);
+    color: $accent;
+    transform: translateY(-1px);
+
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+// Нижняя часть футера
+.footer_bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.copyright {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: $text-muted;
+  letter-spacing: 0.5px;
+}
+
+.rights {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  color: $text-dim;
+  letter-spacing: 1px;
+}
+
+// Адаптив для средних экранов
+@media (max-width: 900px) {
+  .footer_inner {
+    padding: 4.5rem 2rem 2.5rem;
+  }
+
+  .main_content {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+
+  .brand_section {
+    align-items: center;
+  }
+
+  .contacts_section {
+    align-items: center;
+  }
+
+  .section_title {
+    text-align: center;
+  }
+
+  .contacts_grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .contact_item {
+    align-items: center;
+  }
+
+  .email {
+    width: auto;
+  }
+
+  .footer_bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+// Адаптив для планшетов (2 колонки телефонов)
+@media (min-width: 600px) and (max-width: 900px) {
+  .contacts_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Адаптив для мобильных
+@media (max-width: 600px) {
   .footer {
-    padding: 4rem 1.5rem 2.5rem;
+    margin-top: 6rem;
   }
 
-  .footer_container {
-    padding: 2.4rem 2rem;
-    border-radius: 22px;
+  .footer_inner {
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .main_content {
+    gap: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   .logo {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+  }
+
+  .brand_description {
+    font-size: 1rem;
+  }
+
+  .contact_item .phone {
+    font-size: 1.05rem;
+  }
+
+  .email {
+    font-size: 1rem;
+    padding: 0.95rem 1.6rem;
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
-  .footer {
-    padding: 3rem 1rem 2rem;
+  .footer_inner {
+    padding: 3.5rem 1rem 1.8rem;
   }
 
-  .footer_container {
-    padding: 2rem 1.6rem;
-    border-radius: 18px;
+  .main_content {
+    gap: 2.5rem;
   }
 
   .logo {
-    width: 160px;
-    height: 160px;
+    width: 110px;
+  }
+
+  .brand_description {
+    font-size: 0.95rem;
+
+    span {
+      font-size: 0.82rem;
+    }
+  }
+
+  .contact_item .phone {
+    font-size: 1rem;
+  }
+
+  .email {
+    font-size: 0.95rem;
+    padding: 0.85rem 1.4rem;
   }
 
   .copyright {
-    font-size: 1rem;
+    font-size: 0.85rem;
+  }
 
-    span {
-      font-size: 0.8rem;
-    }
+  .rights {
+    font-size: 0.78rem;
   }
 }

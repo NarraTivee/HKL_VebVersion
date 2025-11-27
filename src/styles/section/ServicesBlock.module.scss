@@ -12,43 +12,30 @@ $text-muted: rgba(245, 244, 240, 0.65);
 .services_block {
   width: 100%;
   position: relative;
-  padding: 5rem 0;
+  padding-top: 6rem;
 }
 
 .services_container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 3.5rem 3rem;
-  border-radius: 26px;
-  background: linear-gradient(
-                  170deg,
-                  rgba(13, 27, 42, 0.95) 0%,
-                  rgba(13, 27, 42, 0.88) 50%,
-                  rgba(27, 38, 59, 0.88) 100%
-  );
-  box-shadow:
-          0 25px 60px rgba(0, 0, 0, 0.55),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  position: relative;
-  overflow: hidden;
+  padding: 0 2rem;
 }
 
 // ================================
 // HEADER — УСЛУГИ
 // ================================
 .services_header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 
   h1 {
     margin: 0;
     font-family: "Montserrat", sans-serif;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 1;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1;
     color: $text-light;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     animation: fadeInDown 0.9s ease-out;
   }
 }
@@ -57,14 +44,15 @@ $text-muted: rgba(245, 244, 240, 0.65);
 // DESCRIPTION
 // ================================
 .services_description {
-  margin-bottom: 3rem;
-  padding-left: 1.4rem;
+  margin-bottom: 2.5rem;
+  padding-left: 1.2rem;
   border-left: 4px solid $accent;
+  max-width: 900px;
 
   p {
     font-family: "Inter", sans-serif;
-    font-size: clamp(1.1rem, 1.4vw, 1.3rem);
-    line-height: 1.75;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.65;
     color: $text-muted;
 
     .highlight {
@@ -80,126 +68,39 @@ $text-muted: rgba(245, 244, 240, 0.65);
 .services_list {
   list-style: none;
   padding: 0;
-  margin: 0 0 5rem 0;
+  margin: 0;
   display: grid;
-  gap: 1.4rem;
-  counter-reset: service;
+  gap: 1rem;
+  max-width: 900px;
 
   li {
     position: relative;
-    padding: 1.6rem 2rem;
-    padding-left: 4.2rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    padding-left: 2rem;
     font-family: "Inter", sans-serif;
-    font-size: clamp(1.05rem, 1.2vw, 1.15rem);
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
     color: $text-light;
-    line-height: 1.65;
-    transition: all 0.35s ease;
+    line-height: 1.7;
+    transition: all 0.3s ease;
 
     &::before {
-      counter-increment: service;
-      content: "0" counter(service);
+      content: "●";
       position: absolute;
-      left: 1.6rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: "Montserrat", sans-serif;
-      font-weight: 900;
-      font-size: 1.6rem;
+      left: 0;
+      top: 0;
       color: $accent;
-      opacity: 0.9;
+      line-height: inherit; // наследует line-height родителя
     }
 
     &:hover {
-      transform: translateY(-6px);
-      border-color: rgba($accent, 0.35);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+      color: $accent-light;
+      transform: translateX(6px);
     }
 
-    animation: fadeInUp 0.7s ease-out forwards;
+    animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0;
     @for $i from 1 through 6 {
-      &:nth-child(#{$i}) { animation-delay: #{0.15s + $i * 0.1s}; }
+      &:nth-child(#{$i}) { animation-delay: #{0.1s + $i * 0.08s}; }
     }
-  }
-}
-
-// ================================
-// GALLERY — НАШИ РАБОТЫ (в стиле WelcomBlock)
-// ================================
-.gallery_section {
-  margin-top: 2rem;
-}
-
-.gallery_title {
-  margin-bottom: 3rem;
-
-  h2 {
-    margin: 0;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: clamp(2.8rem, 6vw, 4.8rem);
-    line-height: 1.1;
-    color: $text-light;
-    letter-spacing: 1.5px;
-
-    span {
-      color: $accent;
-      font-weight: 700;
-      opacity: 0.95;
-    }
-
-    animation: fadeInUp 0.9s ease-out;
-  }
-}
-
-.gallery_grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);   // ← строго 3 колонки, как было
-  gap: 1.8rem;
-}
-
-.gallery_item {
-  aspect-ratio: 4 / 3;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.45s ease;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg,
-            rgba(13, 27, 42, 0.1),
-            rgba(224, 167, 94, 0.2) 100%
-    );
-    opacity: 0;
-    transition: opacity 0.45s ease;
-  }
-
-  &:hover {
-    transform: translateY(-14px) scale(1.04);
-    box-shadow: 0 30px 60px rgba(224, 167, 94, 0.3);
-    border-color: rgba($accent, 0.4);
-
-    &::after { opacity: 1; }
-  }
-
-  animation: fadeInUp 0.7s ease-out forwards;
-  opacity: 0;
-  @for $i from 1 through 6 {
-    &:nth-child(#{$i}) { animation-delay: #{0.8s + $i * 0.1s}; }
   }
 }
 
@@ -207,7 +108,7 @@ $text-muted: rgba(245, 244, 240, 0.65);
 // АНИМАЦИИ
 // ================================
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -219,15 +120,47 @@ $text-muted: rgba(245, 244, 240, 0.65);
 // ================================
 // АДАПТИВ
 // ================================
-@media (max-width: 900px) {
-  .gallery_grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.4rem;
+@media (max-width: 768px) {
+  .services_block {
+    padding: 3rem 0;
+  }
+
+  .services_container {
+    padding: 0 1.5rem;
+  }
+
+  .services_list {
+    gap: 0.85rem;
   }
 }
 
 @media (max-width: 600px) {
-  .services_container { padding: 2.5rem 1.8rem; }
-  .gallery_grid { grid-template-columns: 1fr; }
-  .services_list li { padding-left: 3.8rem; }
+  .services_block {
+    padding: 2.5rem 0;
+  }
+
+  .services_container {
+    padding: 0 1rem;
+  }
+
+  .services_header {
+    margin-bottom: 1.5rem;
+  }
+
+  .services_description {
+    margin-bottom: 2rem;
+  }
+
+  .services_list {
+    gap: 0.75rem;
+
+    li {
+      padding-left: 1.6rem;
+      font-size: 0.92rem;
+
+      &::before {
+        font-size: 1rem;
+      }
+    }
+  }
 }

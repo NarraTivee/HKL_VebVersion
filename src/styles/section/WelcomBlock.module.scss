@@ -12,10 +12,12 @@ $text-muted: rgba(245, 244, 240, 0.65);
 // ================================
 .welcom_block {
   width: 100%;
-  height: 100vh;  // ← оставляем как было
+  min-height: 100vh;
   padding: 2rem;
   box-sizing: border-box;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 // ================================
@@ -24,6 +26,7 @@ $text-muted: rgba(245, 244, 240, 0.65);
 .welcom_container {
   width: 100%;
   height: 100%;
+  min-height: 90vh;
   max-width: 1400px;
   margin: 0 auto;
   border-radius: 26px;
@@ -40,9 +43,8 @@ $text-muted: rgba(245, 244, 240, 0.65);
                   rgba(27, 38, 59, 0.88) 100%
   );
 
-  box-shadow:
-          0 25px 60px rgba(0, 0, 0, 0.55),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55),
+  inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 
   backdrop-filter: blur(8px);
 }
@@ -57,7 +59,6 @@ $text-muted: rgba(245, 244, 240, 0.65);
   background-position: center;
   z-index: 0;
 
-  opacity: 0.3;
   filter: brightness(0.85) contrast(1.05);
 
   &::after {
@@ -97,9 +98,8 @@ $text-muted: rgba(245, 244, 240, 0.65);
 
   border: 1px solid rgba(255, 255, 255, 0.08);
 
-  box-shadow:
-          0 20px 40px rgba(0, 0, 0, 0.45),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45),
+  inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 
   animation: fadeInLeft 0.8s ease-out;
 }
@@ -109,15 +109,29 @@ $text-muted: rgba(245, 244, 240, 0.65);
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  line-height: 1.1;
+  font-size: 46px;
+  line-height: 1;
   color: $text-light;
-  letter-spacing: 1px;
 
   span {
+    display: block;
+  }
+
+  .top_line {
+    margin-bottom: -0.18em;
+  }
+
+  .logistic_line {
+    font-size: 0.9em;
+    line-height: 0.78;
+    margin: 0.1em 0;
     color: $accent;
     font-weight: 700;
-    opacity: 0.9;
+    opacity: 0.95;
+  }
+
+  .bottom_line {
+    margin-top: -0.18em;
   }
 }
 
@@ -127,7 +141,8 @@ $text-muted: rgba(245, 244, 240, 0.65);
   border-left: 3px solid $accent;
 
   p {
-    color: $text-muted;
+    margin: 0;
+    color: $text-light;
     font-size: clamp(1rem, 1.2vw, 1.15rem);
     line-height: 1.65;
     font-family: "Inter", sans-serif;
@@ -141,30 +156,14 @@ $text-muted: rgba(245, 244, 240, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeInRight 0.8s ease-out;
 }
 
-.logo {
-  width: clamp(200px, 26vw, 350px);
-  height: clamp(200px, 26vw, 350px);
-  background-size: contain;
-  background-repeat: no-repeat;
-
+.logo_img {
+  width: clamp(200px, 26vw, 340px);
+  height: auto;
+  max-width: 90vw;
   filter: drop-shadow(0 10px 30px rgba(224, 167, 94, 0.35));
-
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -25px;
-    border-radius: 50%;
-    background: radial-gradient(
-                    circle,
-                    rgba(243, 200, 140, 0.25),
-                    transparent 70%
-    );
-  }
+  animation: fadeInRight 0.8s ease-out;
 }
 
 // ================================
@@ -193,73 +192,173 @@ $text-muted: rgba(245, 244, 240, 0.65);
 }
 
 // ================================
-// ADAPTIVE — ТОЛЬКО ФИКС ДЛЯ МОБИЛЬКИ
+// ADAPTIVE — ПЛАНШЕТЫ
+// ================================
+@media (max-width: 1024px) {
+  .welcom_content {
+    gap: 2rem;
+  }
+
+  .welcom_text_card {
+    padding: 2rem;
+  }
+}
+
+// ================================
+// ADAPTIVE — СРЕДНИЕ ЭКРАНЫ
 // ================================
 @media (max-width: 900px) {
+  .welcom_block {
+    padding: 1.5rem;
+    min-height: auto;
+  }
+
   .welcom_container {
-    height: unset;
+    min-height: auto;
+    padding: 1.5rem;
+    border-radius: 20px;
   }
 
   .welcom_content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .logo_wrapper {
-    order: -1;  // ← логотип сверху, как было
+    order: -1;
   }
 
-  .logo {
-    width: 180px;
-    height: 180px;
+  .logo_img {
+    width: clamp(160px, 40vw, 220px);
   }
 
   .welcom_text_card {
-    padding: 1.8rem;  // ← НОВОЕ: уменьшаем padding карточки
+    padding: 1.8rem;
   }
 
   .welcom_description {
-    margin-top: 0.8rem;  // ← НОВОЕ: меньше отступ сверху описания
-    padding-left: 0.8rem;  // ← НОВОЕ: меньше left-border
+    margin-top: 1rem;
+    padding-left: 1rem;
   }
 
   .welcom_description p {
-    font-size: 1rem;  // ← НОВОЕ: фиксированный размер текста на планшете
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+}
+
+// ================================
+// ADAPTIVE — МОБИЛЬНЫЕ
+// ================================
+@media (max-width: 640px) {
+  .welcom_block {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .welcom_container {
+    padding: 1.2rem;
+    border-radius: 16px;
+  }
+
+  .welcom_content {
+    gap: 2rem;
+  }
+
+  .logo_img {
+    width: clamp(140px, 35vw, 180px);
+  }
+
+  .welcom_text_card {
+    padding: 1.5rem;
+  }
+
+  .welcom_title h1 {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    line-height: 1.15;
+  }
+
+  .welcom_description {
+    margin-top: 0.9rem;
+    padding-left: 0.9rem;
+    border-left-width: 2.5px;
+  }
+
+  .welcom_description p {
+    font-size: 0.98rem;
     line-height: 1.55;
   }
 }
 
+// ================================
+// ADAPTIVE — МАЛЕНЬКИЕ МОБИЛЬНЫЕ
+// ================================
 @media (max-width: 480px) {
   .welcom_block {
-    padding: 1rem;  // ← как было, но теперь с учётом
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
   }
 
   .welcom_container {
-    padding: 1.2rem;  // ← как было
-    height: unset;
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .welcom_content {
+    gap: 1.5rem;
+  }
+
+  .logo_img {
+    width: 130px;
   }
 
   .welcom_text_card {
-    padding: 1.2rem;  // ← НОВОЕ: ещё меньше на маленьких экранах
+    padding: 1.2rem;
+    border-radius: 14px;
   }
 
   .welcom_title h1 {
-    font-size: 1.8rem;  // ← как было
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
   }
 
   .welcom_description {
-    margin-top: 0.6rem;  // ← НОВОЕ: минимальный отступ
-    padding-left: 0.6rem;  // ← НОВОЕ: минимальный left-border
-    border-left-width: 2px;  // ← НОВОЕ: тоньше линия
+    margin-top: 0.7rem;
+    padding-left: 0.7rem;
+    border-left-width: 2px;
   }
 
   .welcom_description p {
-    font-size: 0.95rem;  // ← НОВОЕ: чуть меньше текст, чтобы влезло
-    line-height: 1.5;  // ← НОВОЕ: плотнее строки
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+// ================================
+// ADAPTIVE — ОЧЕНЬ МАЛЕНЬКИЕ
+// ================================
+@media (max-width: 360px) {
+  .welcom_block {
+    padding: 0.6rem;
   }
 
-  .logo {
-    width: 130px;
-    height: 130px;  // ← как было
+  .welcom_container {
+    padding: 0.8rem;
+  }
+
+  .welcom_text_card {
+    padding: 1rem;
+  }
+
+  .logo_img {
+    width: 110px;
+  }
+
+  .welcom_title h1 {
+    font-size: 1.3rem;
+  }
+
+  .welcom_description p {
+    font-size: 0.85rem;
   }
 }
